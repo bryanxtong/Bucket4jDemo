@@ -1,0 +1,32 @@
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+spring:
+  application:
+    name: RateLimitServerEhcache
+  cache:
+    jcache:
+      config: ehcache.xml
+server:
+  port: 8083
+
+bucket4j:
+  enabled: true
+  cache-to-use: jcache
+  filter-config-cache-name: filterConfigCache
+  filter-config-caching-enabled: true
+  filters:
+    - id: filter1
+      cache-name: buckets
+      filter-method: servlet
+      url: .*
+      rate-limits:
+        - bandwidths:
+            - capacity: 3
+              time: 60
+              unit: seconds
+              refill-capacity: 3
+              refill-speed: interval
+#debug: true

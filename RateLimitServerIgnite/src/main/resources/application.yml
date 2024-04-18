@@ -1,0 +1,32 @@
+spring:
+  application:
+    name: RateLimitServerIgnite
+logging:
+  level:
+    com.giffing.bucket4j.spring.boot.starter: debug
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+
+bucket4j:
+  enabled: true
+  filter-config-caching-enabled: true
+  filter-config-cache-name: filterConfigCache
+  filters:
+    - id: filter1
+      cache-name: buckets
+      filter-method: webflux
+      url: .*
+      rate-limits:
+        - tokens-inheritance-strategy: reset
+          bandwidths:
+            - capacity: 5
+              time: 10
+              unit: seconds
+              refill-speed: interval
+  cache-to-use: ignite
+debug: true
+server:
+  port: 8083

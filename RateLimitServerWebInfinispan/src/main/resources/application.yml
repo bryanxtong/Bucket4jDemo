@@ -1,0 +1,36 @@
+logging:
+  level:
+    com.giffing.bucket4j.spring.boot.starter: debug
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+spring:
+  cache:
+    type: infinispan
+infinispan:
+  embedded:
+    config-xml: infinispan.xml
+
+bucket4j:
+  enabled: true
+  filter-config-caching-enabled: true
+  filter-config-cache-name: filterConfigCache
+  filters:
+    - id: filter1
+      cache-name: buckets
+      filter-method: servlet
+      url: .*
+      rate-limits:
+        - bandwidths:
+            - capacity: 5
+              time: 10
+              unit: seconds
+              refill-speed: interval
+              #should update to jache-infinispan in future
+  cache-to-use: jcache-ignite
+debug: true
+server:
+  port: 8083

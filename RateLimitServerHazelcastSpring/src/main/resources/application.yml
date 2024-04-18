@@ -1,0 +1,38 @@
+logging:
+  level:
+    com.giffing.bucket4j.spring.boot.starter: debug
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+spring:
+  application:
+    name: RateLimitServerHazelcast
+  cache:
+    type: hazelcast
+  main:
+    allow-bean-definition-overriding: true
+bucket4j:
+  enabled: true
+  filter-config-caching-enabled: true
+  filter-config-cache-name: filterConfigCache
+  filters:
+    - id: filter1
+      cache-name: buckets
+      url: .*
+      major-version: 1
+      filter-method: servlet
+      rate-limits:
+        - tokens-inheritance-strategy: reset
+          skip-condition: "getRequestURI().contains('filter')"
+          bandwidths:
+            - capacity: 5
+              time: 10
+              unit: seconds
+              refill-speed: interval
+  cache-to-use: hazelcast-spring
+debug: true
+server:
+  port: 8083

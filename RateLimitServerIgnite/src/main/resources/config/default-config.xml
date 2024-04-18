@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+        http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean class="org.apache.ignite.configuration.IgniteConfiguration">
+        <property name="workDirectory" value="G:\\springcloud\\springinaction\\ratelimit\\Bucket4jDemo\\Bucket4jDemo\\ignite\\work"/>
+
+        <property name="cacheConfiguration">
+            <list>
+                <bean class="org.apache.ignite.configuration.CacheConfiguration">
+                    <!-- Set the cache name. -->
+                    <property name="name" value="buckets"/>
+                    <!-- Set the cache mode. -->
+                    <property name="cacheMode" value="PARTITIONED"/>
+                    <!-- Other cache parameters. -->
+                </bean>
+                <bean class="org.apache.ignite.configuration.CacheConfiguration">
+                    <!-- Set the cache name. -->
+                    <property name="name" value="filterConfigCache"/>
+                    <!-- Set the cache mode. -->
+                    <property name="cacheMode" value="PARTITIONED"/>
+                    <!-- Other cache parameters. -->
+                </bean>
+            </list>
+
+        </property>
+    </bean>
+</beans>

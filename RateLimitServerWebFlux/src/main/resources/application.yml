@@ -1,0 +1,36 @@
+logging:
+  level:
+    com.giffing.bucket4j.spring.boot.starter: debug
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+
+spring:
+  application:
+    name: RateLimitServerWebFlux
+  main:
+    allow-bean-definition-overriding: true
+  cache:
+    type: hazelcast
+bucket4j:
+  enabled: true
+  filter-config-caching-enabled: true
+  filter-config-cache-name: filterConfigCache
+  filters:
+    - id: filter1
+      cache-name: buckets
+      filter-method: webflux
+      url: .*
+      filter-order: 1
+      rate-limits:
+        - bandwidths:
+            - capacity: 5
+              time: 10
+              unit: seconds
+              refill-speed: interval
+  cache-to-use: hazelcast-reactive
+debug: false
+server:
+  port: 8083
