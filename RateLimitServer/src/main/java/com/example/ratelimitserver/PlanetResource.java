@@ -6,7 +6,9 @@ import io.github.bucket4j.Bucket;
 import io.github.bucket4j.ConsumptionProbe;
 import jakarta.annotation.PostConstruct;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.util.MimeType;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -22,7 +24,7 @@ class PlanetResource {
     private Bucket bucket;
     private final List<String> PLANETS = Arrays.asList("Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune", "Pluto");
 
-    @GetMapping("/planet")
+    @GetMapping(value = "/planet", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<String> getPlanet() {
         ConsumptionProbe consumptionProbe = bucket.tryConsumeAndReturnRemaining(1);
         if (consumptionProbe.isConsumed()) {
@@ -31,7 +33,7 @@ class PlanetResource {
         } else {
             return ResponseEntity.status(HttpStatus.TOO_MANY_REQUESTS)
                     .header("X-Rate-Limit-Retry-After-Seconds", Long.toString(consumptionProbe.getNanosToWaitForRefill() / 1_000_000_000))
-                    .build();
+                    .body("{\"message\":\"Too Many Requests!\"}");
         }
     }
 
