@@ -30,7 +30,7 @@ bucket4j:
               unit: seconds
               refill-speed: interval
               #should update to jache-infinispan in future
-  cache-to-use: jcache-ignite
+  cache-to-use: jcache-infinispan
 debug: true
 server:
   port: 8083
