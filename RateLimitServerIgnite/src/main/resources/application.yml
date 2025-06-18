@@ -27,6 +27,5 @@ bucket4j:
               unit: seconds
               refill-speed: interval
   cache-to-use: ignite
-debug: true
 server:
   port: 8083

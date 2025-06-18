@@ -5,7 +5,7 @@
     <parent>
         <groupId>com.giffing.bucket4j.spring.boot.starter</groupId>
         <artifactId>bucket4j-spring-boot-starter-parent</artifactId>
-        <version>0.12.7</version>
+        <version>0.12.10</version>
     </parent>
     <groupId>com.example</groupId>
     <artifactId>RateLimitServerGateway</artifactId>
@@ -16,8 +16,7 @@
     <description>RateLimitServerGateway</description>
     <properties>
         <java.version>17</java.version>
-        <spring-cloud.version>2023.0.1</spring-cloud.version>
-        <revision>0.12.6</revision>
+        <spring-cloud.version>2024.0.0</spring-cloud.version>
     </properties>
     <dependencies>
         <dependency>

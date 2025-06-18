@@ -5,7 +5,7 @@
     <parent>
         <groupId>com.giffing.bucket4j.spring.boot.starter</groupId>
         <artifactId>bucket4j-spring-boot-starter-parent</artifactId>
-        <version>0.12.7</version>
+        <version>0.12.10</version>
     </parent>
     <groupId>com.example</groupId>
     <artifactId>RateLimitServerRedisLettuce</artifactId>
@@ -13,7 +13,7 @@
     <description>RateLimitServerRedisLettuce</description>
     <properties>
         <java.version>17</java.version>
-        <lettuce-core.version>6.3.2.RELEASE</lettuce-core.version>
+        <lettuce-core.version>6.5.5.RELEASE</lettuce-core.version>
     </properties>
     <dependencies>
         <dependency>

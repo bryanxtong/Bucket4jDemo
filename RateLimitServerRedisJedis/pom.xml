@@ -5,7 +5,7 @@
     <parent>
         <groupId>com.giffing.bucket4j.spring.boot.starter</groupId>
         <artifactId>bucket4j-spring-boot-starter-parent</artifactId>
-        <version>0.12.7</version>
+        <version>0.12.10</version>
     </parent>
     <groupId>com.example</groupId>
     <artifactId>RateLimitServerRedisJedis</artifactId>
@@ -13,7 +13,7 @@
     <description>RateLimitServerRedisJedis</description>
     <properties>
         <java.version>17</java.version>
-        <jedis.version>5.1.2</jedis.version>
+        <jedis.version>5.2.0</jedis.version>
     </properties>
     <dependencies>
         <dependency>

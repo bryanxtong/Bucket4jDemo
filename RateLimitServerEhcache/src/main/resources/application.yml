@@ -29,4 +29,3 @@ bucket4j:
               unit: seconds
               refill-capacity: 3
               refill-speed: interval
-#debug: true

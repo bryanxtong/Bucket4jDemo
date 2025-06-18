@@ -7,8 +7,6 @@
         http://www.springframework.org/schema/beans/spring-beans.xsd">
 
     <bean class="org.apache.ignite.configuration.IgniteConfiguration">
-        <property name="workDirectory" value="G:\\springcloud\\springinaction\\ratelimit\\Bucket4jDemo\\Bucket4jDemo\\ignite\\work"/>
-
         <property name="cacheConfiguration">
             <list>
                 <bean class="org.apache.ignite.configuration.CacheConfiguration">

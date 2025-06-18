@@ -30,6 +30,5 @@ bucket4j:
               unit: seconds
               refill-speed: interval
   cache-to-use: infinispan
-debug: true
 server:
   port: 8083
