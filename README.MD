@@ -1,1 +1,1 @@
-Examples on how to use bucket4j-spring-boot-starter to integrate different cache providers with bucket4j rate limiter for restful apis and spring cloud gateway
+Examples on how to use bucket4j-spring-boot-starter to integrate different cache providers (Caffeine,Ehcache,Hazelcast,Ignite,Redis,Infinispan) with bucket4j rate limiter for restful apis and spring cloud gateway
